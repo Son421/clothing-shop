@@ -1,0 +1,54 @@
+.cart-product-block{
+    display: flex;
+    margin: 14px;
+    padding: 18px 0px;
+    border-bottom: 1px dashed #2125293a;
+    font-family:'Poppins', sans-serif;
+}
+
+.cart-product-block_title{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 18px;
+}
+
+.cart-product-block_price{
+   margin: 0px 18px;
+}
+
+.cart-product-block_counter{
+    display: flex;
+    align-self: center;
+    margin: 40px;
+    margin-left: auto;
+}
+
+.cart-product-block_counter_button{
+    cursor: pointer;
+    border: 1px solid #2125293a;
+    padding: 0px 10px;
+    transition: all .15s ease-in 0s;
+}
+
+.cart-product-block_counter_button:hover{
+    background-color: rgb(252, 252, 252);
+}
+
+.cart-product-block_counter_number{
+    border-bottom: 1px solid #2125293a;
+    border-top: 1px solid #2125293a;
+    padding: 15px;
+}
+
+.cart-product-block_delete_button{
+    border: none;
+    background-color: white;
+    height: 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all .15s ease-in 0s;
+}
+
+.cart-product-block_delete_button:hover{
+    color: rgb(102, 127, 173);
+}
