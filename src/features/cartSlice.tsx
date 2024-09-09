@@ -57,6 +57,10 @@ export const cartProductSlice = createSlice({
         state.value = state.value.filter( item => item._id !== action.payload._id);
         saveCartToLocalStorage(state.value);
       },
+      clearCart: (state) => {
+        state.value = [];
+        saveCartToLocalStorage(state.value);
+      },
       plusProduct: (state, action: PayloadAction<cartProducts>) => {
         const index = state.value.findIndex(product => product._id === action.payload._id);
         state.value[index].quantity = state.value[index].quantity + 1;
@@ -82,7 +86,7 @@ export const cartProductSlice = createSlice({
     },
 });
 
-export const {changePopupVisibility, addProduct, deleteProduct, plusProduct, minusProduct, setTotalPrice} = cartProductSlice.actions;
+export const {changePopupVisibility, addProduct, deleteProduct, clearCart, plusProduct, minusProduct, setTotalPrice} = cartProductSlice.actions;
 
 export const cartProducts = (state: RootState) => state.cartProducts.value;
 

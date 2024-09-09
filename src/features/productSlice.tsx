@@ -48,18 +48,9 @@ export const productSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchProducts.pending, (state) => {
-                state.loading = true;
-                state.error = null;
-            })
             .addCase(fetchProducts.fulfilled, (state, action: PayloadAction<products[]>) => {
                 state.value = action.payload;
-                state.loading = false;
             })
-            .addCase(fetchProducts.rejected, (state, action) => {
-                state.loading = false;
-                state.error = action.payload as string;
-            });
     },
 });
 

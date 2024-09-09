@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import './shoppingCartPopup.css';
-import { useAppSelector } from "../../hooks/hooks";
+import { useAppSelector, useAppDispatch } from "../../hooks/hooks";
+import { clearCart, setTotalPrice } from "../../features/cartSlice";
 import CartProduct from "../../components/cartProduct/CartProduct";
 import Menu from "../../components/menu/Menu";
 import constants from "../../constants";
@@ -13,6 +14,7 @@ interface customer{
 }
 
 export default function ShoppingCartPopup(){
+    const dispatch = useAppDispatch();
     const cartProduct = useAppSelector(state => state.cartProducts.value);
     const totalPrice = useAppSelector(state => state.cartProducts.totalPrice);
     const selectedCurrency = useAppSelector(state => state.currency.currency);
@@ -36,7 +38,8 @@ export default function ShoppingCartPopup(){
         if (!isFieldsEmpty()) {
             return; 
         }
-        
+        clear();
+
         const payload = {
           customerInfo,
           cartProduct
@@ -60,6 +63,16 @@ export default function ShoppingCartPopup(){
           console.error('Error submitting data:', error);
         }
     };
+
+    function clear(){
+        dispatch(clearCart());
+        dispatch(setTotalPrice(selectedCurrency));
+        setCustomerInfo({
+            name: '',
+            surname: '',
+            phone: '',
+            address: ''});
+    }
 
     const isFieldsEmpty = () => {
         const { name, surname, phone, address } = customerInfo;
